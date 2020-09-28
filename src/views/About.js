@@ -20,7 +20,7 @@ const Wrapper = styled.div`
 const About = () => {
   return (
     <MainTemplate bottom>
-      <Wrapper>Cześć ! Witaj w moim fikcyjnym sklepie internetowym stworzonym na potrzeby nauki Reacta</Wrapper>;
+      <Wrapper>Cześć ! Witaj w moim fikcyjnym sklepie internetowym stworzonym na potrzeby nauki Reacta !</Wrapper>;
     </MainTemplate>
   );
 };
