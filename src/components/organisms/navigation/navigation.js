@@ -2,10 +2,10 @@ import React from 'react';
 import styled, { keyframes, css } from 'styled-components';
 import Hamburger from 'components/atoms/hamburger/hamburger';
 import { connect } from 'react-redux';
-import Face from 'assets/facebook-letter-logo.svg';
+
 import Home from 'assets/home.svg';
 import Cart from 'assets/shopping-cart.svg';
-import Linkedin from 'assets/linkedin.svg';
+
 import { NavLink } from 'react-router-dom';
 import { HomeClicked } from 'actions';
 import { YourCartClicked } from 'actions';
