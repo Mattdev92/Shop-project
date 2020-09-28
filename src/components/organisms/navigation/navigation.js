@@ -99,12 +99,6 @@ const Navigation = ({ HomeClicked, productQuantity, cartIconAnim, YourCartClicke
   <Wrapper sidebarOpen={sidebarOpen} clicked={clicked}>
     <Hamburger />
     <InnerWrapper sidebarOpen={sidebarOpen}>
-      <a href="https://www.facebook.com/mgrzejszczyk">
-        <Img src={Face} alt="Face logo" />
-      </a>
-      <a href="https://www.linkedin.com/in/mateusz-grzejszczyk-03160a1b0/">
-        <Img src={Linkedin} alt="Linkedin logo" />
-      </a>
       <NavLink to="/">
         <Img src={Home} alt="Home logo" onClick={HomeClicked} />
       </NavLink>
