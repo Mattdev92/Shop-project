@@ -41,7 +41,7 @@ const Main = () => (
     <Wrapper>
       <Title>RABATY DO -70%</Title>
     </Wrapper>
-    <StoreName>Sklep NewOne</StoreName>
+    <StoreName>Sklep LoremIpsum</StoreName>
   </MainTemplate>
 );
 export default Main;
