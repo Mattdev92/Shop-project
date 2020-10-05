@@ -15,12 +15,15 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  @media (max-width: 440px) {
+    text-align: center;
+  }
 `;
 
 const About = () => {
   return (
     <MainTemplate bottom>
-      <Wrapper>Cześć ! Witaj w moim fikcyjnym sklepie internetowym stworzonym na potrzeby nauki Reacta ! Źródłem zdjęć fikcyjnych produktow jest strona usplash.com</Wrapper>;
+      <Wrapper>Cześć ! Witaj w moim fikcyjnym sklepie internetowym stworzonym na potrzeby nauki Reacta ! Źródłem zdjęć fikcyjnych produktow jest strona unsplash.com</Wrapper>;
     </MainTemplate>
   );
 };

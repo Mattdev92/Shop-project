@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { HamburgerClicked } from 'actions';
 import PropTypes from 'prop-types';
 
-const sidebarData = ['On', 'Ona', 'Okazje', 'Wizytówka', 'Kontakt', 'Timer'];
+const sidebarData = ['On', 'Ona', 'Okazje', 'Informacje', 'Kontakt', 'Timer'];
 const sidebarDelay = ['1s', '1.3s', '1.6s', '1.9s', '2.2s', '2.5s'];
 const SidebarAnim = keyframes`
 from{

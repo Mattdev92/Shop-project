@@ -23,6 +23,7 @@ const Wrapper = styled.div`
   align-items: center;
   width: 100vw;
   @media (max-width: 440px) {
+    margin:0;
     ${({ sidebarOpen }) =>
       sidebarOpen &&
       css`
