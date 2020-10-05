@@ -7,7 +7,7 @@ export const routes = {
   Okazje: '/Okazje',
   OkazjeDetails: '/Okazje/',
   Kontakt: '/Kontakt',
-  Wizytówka: '/Wizytówka',
+  Wizytówka: '/Info',
   Cart: '/Cart',
   Timer: '/Timer',
   FinalForm: '/Buy'
