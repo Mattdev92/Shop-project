@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   height: 60vh;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   background-color: black;
   opacity: 50%;
   color: white;
@@ -23,7 +23,11 @@ const Wrapper = styled.div`
 const About = () => {
   return (
     <MainTemplate bottom>
-      <Wrapper>Cześć ! Witaj w moim fikcyjnym sklepie internetowym stworzonym na potrzeby nauki Reacta ! Źródłem zdjęć fikcyjnych produktow jest strona unsplash.com</Wrapper>;
+      <Wrapper>
+        Cześć ! Witaj w moim fikcyjnym sklepie internetowym stworzonym na potrzeby nauki Reacta !
+        Źródłem zdjęć fikcyjnych produktow jest strona unsplash.com
+      </Wrapper>
+      ;
     </MainTemplate>
   );
 };
