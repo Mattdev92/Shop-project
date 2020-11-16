@@ -1,11 +1,12 @@
 import React from 'react';
-import styled, { keyframes, css } from 'styled-components';
+import styled, {
+  keyframes,
+  css,
+} from 'styled-components';
 import Hamburger from 'components/atoms/hamburger/hamburger';
 import { connect } from 'react-redux';
-
 import Home from 'assets/home.svg';
 import Cart from 'assets/shopping-cart.svg';
-
 import { NavLink } from 'react-router-dom';
 import { HomeClicked } from 'actions';
 import { YourCartClicked } from 'actions';
@@ -39,30 +40,30 @@ const Wrapper = styled.nav`
   justify-content: space-between;
   align-items: center;
   @media (max-width: 440px) {
-   justify-content:center;
-   ${({sidebarOpen})=>sidebarOpen&&
-  css`
-    height: 49px;
-    width:43px;
-  `}
-  ${({clicked})=>clicked&&
-  css`
-    height: 49px;
-  `
-  } 
+    justify-content: center;
+    ${({ sidebarOpen }) =>
+      sidebarOpen &&
+      css`
+        height: 49px;
+        width: 43px;
+      `}
+    ${({ clicked }) =>
+      clicked &&
+      css`
+        height: 49px;
+      `}
   }
-  
 `;
 const InnerWrapper = styled.nav`
   margin: 0px 10px;
-  
- @media (max-width: 440px) {
+
+  @media (max-width: 440px) {
     align-items: center;
-   ${({sidebarOpen})=>sidebarOpen&&
-    css`
-    display: none;
-    `
-    } 
+    ${({ sidebarOpen }) =>
+      sidebarOpen &&
+      css`
+        display: none;
+      `}
   }
 `;
 const CartWrapper = styled.div`
@@ -95,12 +96,26 @@ const ImgCart = styled.img`
     `}
 `;
 
-const Navigation = ({ HomeClicked, productQuantity, cartIconAnim, YourCartClicked,sidebarOpen,clicked }) => (
-  <Wrapper sidebarOpen={sidebarOpen} clicked={clicked}>
+const Navigation = ({
+  HomeClicked,
+  productQuantity,
+  cartIconAnim,
+  YourCartClicked,
+  sidebarOpen,
+  clicked,
+}) => (
+  <Wrapper
+    sidebarOpen={sidebarOpen}
+    clicked={clicked}
+  >
     <Hamburger />
     <InnerWrapper sidebarOpen={sidebarOpen}>
       <NavLink to="/">
-        <Img src={Home} alt="Home logo" onClick={HomeClicked} />
+        <Img
+          src={Home}
+          alt="Home logo"
+          onClick={HomeClicked}
+        />
       </NavLink>
       <CartWrapper>
         <Counter>{productQuantity}</Counter>
@@ -118,17 +133,33 @@ const Navigation = ({ HomeClicked, productQuantity, cartIconAnim, YourCartClicke
 );
 
 const mapStateToProps = (state) => {
-  const { newone, productQuantity, cartIconAnim,sidebarOpen, clicked } = state;
-  return { newone, productQuantity, cartIconAnim,sidebarOpen, clicked };
+  const {
+    newone,
+    productQuantity,
+    cartIconAnim,
+    sidebarOpen,
+    clicked,
+  } = state;
+  return {
+    newone,
+    productQuantity,
+    cartIconAnim,
+    sidebarOpen,
+    clicked,
+  };
 };
 const mapDispatchToProps = (dispatch) => ({
   HomeClicked: () => dispatch(HomeClicked()),
-  YourCartClicked: () => dispatch(YourCartClicked()),
+  YourCartClicked: () =>
+    dispatch(YourCartClicked()),
 });
-export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
-Navigation.propTypes={
-   productQuantity: PropTypes.number,
-   cartIconAnim: PropTypes.bool,
-   sidebarOpen:PropTypes.bool,
-   clicked: PropTypes.bool
-}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Navigation);
+Navigation.propTypes = {
+  productQuantity: PropTypes.number,
+  cartIconAnim: PropTypes.bool,
+  sidebarOpen: PropTypes.bool,
+  clicked: PropTypes.bool,
+};

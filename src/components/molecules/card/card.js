@@ -13,10 +13,8 @@ const Wrapper = styled.div`
   position: relative;
   width: 240px;
   height: 320px;
-  opacity: 70%;
   :hover {
     cursor: pointer;
-    opacity: 100%;
     transition: all 1.3s ease-out;
   }
   @media (max-width: 440px) {
@@ -63,7 +61,6 @@ const BackgroundImg = styled.img`
   :hover {
     cursor: pointer;
     transform: scale(1.2);
-    opacity: 100%;
     transition: all 0.3s ease-out;
   }
 
