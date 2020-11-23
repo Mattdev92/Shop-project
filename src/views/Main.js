@@ -1,47 +1,76 @@
 import React from 'react';
 import MainTemplate from 'templates/MainTemplate/MainTemplate';
 import styled from 'styled-components';
+import bacgroundImage from 'assets/fashion.jpg';
+import bacgroundImageTwo from 'assets/fashionMen.jpg';
+import Slider from 'react-slick';
+import { TimelineMax } from 'gsap';
+
 const Wrapper = styled.div`
-  position: absolute;
-  top: 80px;
-  background-color: rgb(215, 179, 157);
-  color: white;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 30vh;
-  opacity: 70%;
+  background-image: url(${bacgroundImage});
+  width: 80vw;
+  height: 85vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+`;
+const WrapperTwo = styled.div`
+  background-image: url(${bacgroundImageTwo});
+  width: 80vw;
+  height: 85vh;
+  background-size: cover;
+  background-repeat: no-repeat;
 `;
 const Title = styled.h1`
-  font-size: 3rem;
-  @media (max-width: 440px) {
-    font-size: 2rem;
-  }
-`;
-const StoreName = styled.div`
-  font-size: 3rem;
-  font-weight: bold;
-  display: flex;
   position: absolute;
-  top: 0;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 10vh;
-  @media (max-width: 440px) {
-    font-size: 2rem;
-    top: 50vh;
-  }
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:42px;
+  font-family: 'Jost', sans-serif;
+  font-weight:700;
+  color:white;
+  background-color:black;
+  z-index: 2;
 `;
+class Main extends React.Component {
+  constructor(props) {
+    super(props);
+    this.sliderSection = [];
+    this.tlMain1 = new TimelineMax();
+  } 
+  componentDidMount() {
+    // use the node ref to create the animation
+    if (window.screen.width > 400) {
+        this.tlMain1
+          .fromTo(
+            this.sliderSection[0],
+            { autoAlpha: 0, y:50 },
+            { duration: 0.5, autoAlpha: 1, y: 0, delay: 1 }
+          )
+    }
+  } 
+  render() {
+    const settings = {
+      dots: false,
+      fade: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      arrows: true,
+      slidesToScroll: 1,
+      className: 'slides',
+      lazyLoad: true,
+    };
+    return (
+      <MainTemplate >
+         <Title ref={(h1)=>this.sliderSection[0]=h1}>NOTHIN' LIKE LUX</Title>
+        <Slider {...settings}>
+          <Wrapper/>
+          <WrapperTwo />
+        </Slider >
+      </MainTemplate>
+    );
+  }
+}
 
-const Main = () => (
-  <MainTemplate bottom>
-    <Wrapper>
-      <Title>RABATY DO -70%</Title>
-    </Wrapper>
-    <StoreName>Sklep LoremIpsum</StoreName>
-  </MainTemplate>
-);
 export default Main;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 import withContext from 'hoc/withContext';
-import UserTemplate from 'templates/UserTemplate/UserTemplate';
+import UserSection from 'templates/UserSection/UserSection';
 import {connect} from 'react-redux';
 import {YourCartClicked} from 'actions';
 import PropTypes from 'prop-types';
@@ -15,7 +15,7 @@ class User extends React.Component{
   render(){
     const{ location: { pathname } }=this.props;
     return(
-      <UserTemplate pathname={pathname}/>
+      <UserSection pathname={pathname}/>
     )
   }
 }

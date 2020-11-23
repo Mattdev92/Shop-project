@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const Wrapper = styled.nav`
   display: flex;
@@ -12,22 +12,10 @@ const Wrapper = styled.nav`
   align-items: center;
   justify-content: center;
   font-size: 0.8rem;
-  ${({ bottom }) =>
-    bottom &&
-    css`
-      position: absolute;
-      bottom: 0;
-      left: 0;
-    `}
-  ${({ display }) =>
-    display &&
-    css`
-      display: none;
-    `}
 `;
 
-const Footer = ({ bottom, display }) => (
-  <Wrapper bottom={bottom} display={display}>
+const Footer = () => (
+  <Wrapper>
     <p>© 2020 Mateusz Grzejszczyk. All rights reserved</p>
   </Wrapper>
 );

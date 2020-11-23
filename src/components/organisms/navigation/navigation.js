@@ -11,7 +11,7 @@ import { NavLink } from 'react-router-dom';
 import { HomeClicked } from 'actions';
 import { YourCartClicked } from 'actions';
 import PropTypes from 'prop-types';
-
+const sidebarData = ['On', 'Ona', 'Okazje'];
 const cartAnim = keyframes`
 0%{
   transform: translateX(0px)
@@ -31,40 +31,24 @@ const cartAnim = keyframes`
 `;
 
 const Wrapper = styled.nav`
+  height: 15vh;
+  padding:0 30px;
   position: sticky;
   top: 0;
   display: flex;
-  height: 30px;
-  width: 100vw;
   z-index: 999;
   justify-content: space-between;
   align-items: center;
-  @media (max-width: 440px) {
-    justify-content: center;
-    ${({ sidebarOpen }) =>
-      sidebarOpen &&
-      css`
-        height: 49px;
-        width: 43px;
-      `}
-    ${({ clicked }) =>
-      clicked &&
-      css`
-        height: 49px;
-      `}
-  }
+  font-family: 'Jost', sans-serif;
+  text-transform: uppercase;
+  font-size:12px;
+  background-color:white;
 `;
 const InnerWrapper = styled.nav`
   margin: 0px 10px;
-
-  @media (max-width: 440px) {
-    align-items: center;
-    ${({ sidebarOpen }) =>
-      sidebarOpen &&
-      css`
-        display: none;
-      `}
-  }
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
 `;
 const CartWrapper = styled.div`
   display: inline-block;
@@ -74,7 +58,7 @@ const CartWrapper = styled.div`
   height: 40px;
 `;
 const Counter = styled.div`
-  color: red;
+  color: black;
   font-size: 20px;
   margin: 10px 0px;
   position: absolute;
@@ -96,6 +80,16 @@ const ImgCart = styled.img`
     `}
 `;
 
+
+const Item = styled(NavLink)`
+    color: black;
+    text-decoration: none;
+
+    &:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+    }
+`;
+
 const Navigation = ({
   HomeClicked,
   productQuantity,
@@ -108,8 +102,15 @@ const Navigation = ({
     sidebarOpen={sidebarOpen}
     clicked={clicked}
   >
-    <Hamburger />
-    <InnerWrapper sidebarOpen={sidebarOpen}>
+    <Hamburger/>
+    {
+        sidebarData.map(item=>
+          <Item to={`/${item}`}>
+        {item}
+      </Item>
+          )
+    }
+    <InnerWrapper sidebarOpen={sidebarOpen}>   
       <NavLink to="/">
         <Img
           src={Home}

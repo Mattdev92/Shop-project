@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import MainTemplate from 'templates/MainTemplate/MainTemplate';
+import MainTemplate from '../templates/MainTemplate/MainTemplate';
 import { connect } from 'react-redux';
 import { PlusClicked } from 'actions';
 import { MinusClicked } from 'actions';
@@ -63,8 +63,13 @@ const Button = styled.button`
       : 'blue'};
   height: 30px;
   margin: ${({ color }) =>
-    color === 'green' ? '10px 0px 0 30px' : color === 'ZAMAWIAM' ? '10px' : '10px 30px'};
-  width: ${({ color }) => (color === 'ZAMAWIAM' ? '150px' : '30px')};
+    color === 'green'
+      ? '10px 0px 0 30px'
+      : color === 'ZAMAWIAM'
+      ? '10px'
+      : '10px 30px'};
+  width: ${({ color }) =>
+    color === 'ZAMAWIAM' ? '150px' : '30px'};
   border: none;
   border-radius: 5px;
   font-size: 1.5rem;
@@ -160,50 +165,107 @@ class Cart extends React.Component {
     return (
       <MainTemplate display>
         <Wrapper sidebaropen={sidebarOpen}>
-          {productQuantity !== 0 && <CourtTitle>Artykuły w koszyku</CourtTitle>}
-          {Object.keys(productTab).map((key, number) => {
-            return (
-              <ItemWrapper key={key}>
-                <Button
-                  onClick={() => DeleteClicked(key, productTab[key].productInfo)}
-                  color="red"
-                  ref={(button) => (this.myButton[number] = button)}
-                >
-                  -
-                </Button>
-                <Img
-                  src={productTab[key].productImage}
-                  alt="error"
-                  ref={(image) => (this.myImage[number] = image)}
-                />
-                {productTab[key].productInfo}
-                <ButtonSection ref={(section) => (this.myButtonSection[number] = section)}>
+          {productQuantity !== 0 && (
+            <CourtTitle>
+              Artykuły w koszyku
+            </CourtTitle>
+          )}
+          {Object.keys(productTab).map(
+            (key, number) => {
+              return (
+                <ItemWrapper key={key}>
                   <Button
-                    onClick={() => PlusClicked(productTab[key], productTab[key].productInfo)}
-                    color="green"
+                    onClick={() =>
+                      DeleteClicked(
+                        key,
+                        productTab[key]
+                          .productInfo,
+                      )
+                    }
+                    color="red"
+                    ref={(button) =>
+                      (this.myButton[
+                        number
+                      ] = button)
+                    }
                   >
-                    +
+                    -
                   </Button>
-                  {productTab[key].QuantityInCart !== 0 ? (
+                  <Img
+                    src={
+                      productTab[key].productImage
+                    }
+                    alt="error"
+                    ref={(image) =>
+                      (this.myImage[
+                        number
+                      ] = image)
+                    }
+                  />
+                  {productTab[key].productInfo}
+                  <ButtonSection
+                    ref={(section) =>
+                      (this.myButtonSection[
+                        number
+                      ] = section)
+                    }
+                  >
                     <Button
-                      onClick={() => MinusClicked(productTab[key], productTab[key].productInfo)}
-                      color="red"
+                      onClick={() =>
+                        PlusClicked(
+                          productTab[key],
+                          productTab[key]
+                            .productInfo,
+                        )
+                      }
+                      color="green"
                     >
-                      -
+                      +
                     </Button>
-                  ) : (
-                    <Button color="red" />
-                  )}
-                </ButtonSection>
-                <PriceSection ref={(section) => (this.myPriceSection[number] = section)}>
-                  {productTab[key].QuantityInCart}
-                </PriceSection>
-                <PriceSection ref={(section) => (this.mySecondPriceSection[number] = section)}>
-                  {productTab[key].TotalPrice} zł
-                </PriceSection>
-              </ItemWrapper>
-            );
-          })}
+                    {productTab[key]
+                      .QuantityInCart !== 0 ? (
+                      <Button
+                        onClick={() =>
+                          MinusClicked(
+                            productTab[key],
+                            productTab[key]
+                              .productInfo,
+                          )
+                        }
+                        color="red"
+                      >
+                        -
+                      </Button>
+                    ) : (
+                      <Button color="red" />
+                    )}
+                  </ButtonSection>
+                  <PriceSection
+                    ref={(section) =>
+                      (this.myPriceSection[
+                        number
+                      ] = section)
+                    }
+                  >
+                    {
+                      productTab[key]
+                        .QuantityInCart
+                    }
+                  </PriceSection>
+                  <PriceSection
+                    ref={(section) =>
+                      (this.mySecondPriceSection[
+                        number
+                      ] = section)
+                    }
+                  >
+                    {productTab[key].TotalPrice}{' '}
+                    zł
+                  </PriceSection>
+                </ItemWrapper>
+              );
+            },
+          )}
           <AllProductPrice>
             {productQuantity === 0
               ? 'Twój koszyk jest pusty :('
@@ -211,7 +273,9 @@ class Cart extends React.Component {
           </AllProductPrice>
           {productQuantity !== 0 && (
             <NavLink to="/Buy">
-              <Button color="ZAMAWIAM">ZAMAWIAM</Button>
+              <Button color="ZAMAWIAM">
+                ZAMAWIAM
+              </Button>
             </NavLink>
           )}
         </Wrapper>
@@ -220,23 +284,63 @@ class Cart extends React.Component {
   }
 }
 const mapStateToProps = (state) => {
-  const { productTab, SumOfAllPrices, productQuantity, sidebarOpen } = state;
-  return { productTab, SumOfAllPrices, productQuantity, sidebarOpen };
+  const {
+    productTab,
+    SumOfAllPrices,
+    productQuantity,
+    sidebarOpen,
+  } = state;
+  return {
+    productTab,
+    SumOfAllPrices,
+    productQuantity,
+    sidebarOpen,
+  };
 };
 const mapDispatchToProps = (dispatch) => ({
-  PlusClicked: (selectedProductTab, productInfo) =>
-    dispatch(PlusClicked(selectedProductTab, productInfo)),
-  MinusClicked: (selectedProductTab, productInfo) =>
-    dispatch(MinusClicked(selectedProductTab, productInfo)),
-  DeleteClicked: (selectedProductTab, productInfo) =>
-    dispatch(DeleteClicked(selectedProductTab, productInfo)),
+  PlusClicked: (
+    selectedProductTab,
+    productInfo,
+  ) =>
+    dispatch(
+      PlusClicked(
+        selectedProductTab,
+        productInfo,
+      ),
+    ),
+  MinusClicked: (
+    selectedProductTab,
+    productInfo,
+  ) =>
+    dispatch(
+      MinusClicked(
+        selectedProductTab,
+        productInfo,
+      ),
+    ),
+  DeleteClicked: (
+    selectedProductTab,
+    productInfo,
+  ) =>
+    dispatch(
+      DeleteClicked(
+        selectedProductTab,
+        productInfo,
+      ),
+    ),
 });
-export default connect(mapStateToProps, mapDispatchToProps)(Cart);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Cart);
 Cart.defaultProps = {
   productTab: [],
 };
 Cart.propTypes = {
-  productTab: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  productTab: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object,
+  ]),
   SumOfAllPrices: PropTypes.number,
   productQuantity: PropTypes.number,
   sidebarOpen: PropTypes.bool,

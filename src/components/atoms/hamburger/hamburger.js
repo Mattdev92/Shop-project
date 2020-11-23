@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   display: inline-block;
   width: 43px;
   height: 49px;
-  background-color: black;
+  background-color: white;
   ${({sidebarOpen})=>sidebarOpen&&
  css`background-color: transparent;`
  }
@@ -28,7 +28,7 @@ const Wrapper = styled.div`
 const HamburgerLine = styled.span`
   display: block;
   height: 1px;
-  background-color: white;
+  background-color: black;
   width: 80%;
   margin: 11px 4px;
   ${({ hamburgerAnim, rotation, position }) =>
