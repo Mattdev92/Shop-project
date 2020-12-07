@@ -7,7 +7,7 @@ const withContext = (Component)=>{
             <context.Consumer>
              {
                 (context)=>(
-                   <Component {...props}context={context}/>
+                   <Component {...props} context={context}/>
                 )
              }   
             </context.Consumer> 

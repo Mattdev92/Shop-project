@@ -10,11 +10,11 @@ const Wrapper = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: black;
-  opacity: 50%;
   color: white;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
+  text-align:center;
   @media (max-width: 440px) {
     text-align: center;
   }
@@ -22,7 +22,7 @@ const Wrapper = styled.div`
 
 const About = () => {
   return (
-    <MainTemplate bottom>
+    <MainTemplate>
       <Wrapper>
         Cześć ! Witaj w moim fikcyjnym sklepie internetowym stworzonym na potrzeby nauki Reacta !
         Źródłem zdjęć fikcyjnych produktow jest strona unsplash.com

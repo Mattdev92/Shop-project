@@ -1,7 +1,15 @@
 
-export const HamburgerClicked =()=>{
+export const hamburgerClicked =()=>{
     return{
         type: "HAMBURGER_CLICKED",
+        payload: {
+            
+        }
+    }   
+}
+export const sidebarStopAnim =()=>{
+    return{
+        type: "SIDEBAR_STOP_ANIM",
         payload: {
             
         }
@@ -17,6 +25,13 @@ export const HomeClicked =()=>{
 export const ReturnClicked =()=>{
     return{
         type: "RETURN_CLICKED",
+        payload: {
+        }
+    }   
+}
+export const RedirectReset =()=>{
+    return{
+        type: "REDIRECT_RESET",
         payload: {
         }
     }   

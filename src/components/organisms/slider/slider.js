@@ -7,10 +7,11 @@ import styled from 'styled-components';
 
 const SliderWrapper = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 `;
-class SliderMan extends React.Component {
+
+class SaleSlider extends React.Component {
   render() {
     const settings = {
       dots: true,
@@ -19,33 +20,35 @@ class SliderMan extends React.Component {
       slidesToShow: 3,
       slidesToScroll: 1,
       arrows: true,
-      className: "slides",
+      className: 'slides',
       lazyLoad: true,
-    };   
+    };
     const { Woman, Man } = this.props;
     return (
-      <Slider {...settings}>
-        {Woman.concat(Man).filter(
-                (product) =>
-                  product[2] < 60).map((product) => (
-            <SliderWrapper  >
-              <Cardlazy
-              product={product}
-              key={product}
-            >
-              {product[1]} {product[2]}zł
-            </Cardlazy>  
-            </SliderWrapper>   
-        ))}
-      </Slider>
+      <section id="Okazje">
+        <Slider {...settings}>
+          {Woman.concat(Man)
+            .filter((product) => product[2] < 60)
+            .map((product) => (
+              <SliderWrapper>
+                <Cardlazy
+                  product={product}
+                  key={product}
+                >
+                  {product[1]} {product[2]}zł
+                </Cardlazy>
+              </SliderWrapper>
+            ))}
+        </Slider>
+      </section>
     );
   }
 }
 const mapStateToProps = (state) => {
-  const { Woman,Man } = state;
-  return { Woman,Man };
+  const { Woman, Man } = state;
+  return { Woman, Man };
 };
-SliderMan.propTypes = {
+SaleSlider.propTypes = {
   pathname: PropTypes.string,
   Man: PropTypes.array,
   Woman: PropTypes.array,
@@ -55,4 +58,4 @@ SliderMan.propTypes = {
 export default connect(
   mapStateToProps,
   null,
-)(SliderMan);
+)(SaleSlider);

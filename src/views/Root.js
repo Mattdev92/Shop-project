@@ -19,10 +19,10 @@ function Root() {
         <Globalstyle />
         <Switch>
           <Route exact path={routes.Main} component={Main} />
-          <Route exact path={routes.Ona} component={User} />
-          <Route exact path={`${routes.OnaDetails}:id`} component={Details} />
-          <Route exact path={routes.On} component={User} />
-          <Route exact path={`${routes.OnDetails}:id`} component={Details} />
+          <Route exact strict path={routes.Ona} component={User} />
+          <Route exact strict path={`${routes.OnaDetails}:id`} component={Details} />
+          <Route exact strict path={routes.On} component={User} />
+          <Route exact strict path={`${routes.OnDetails}:id`} component={Details} />
           <Route exact path={routes.Okazje} component={User} />
           <Route exact path={`${routes.OkazjeDetails}:id`} component={Details} />
           <Route exact path={routes.Kontakt} component={Contact}/>

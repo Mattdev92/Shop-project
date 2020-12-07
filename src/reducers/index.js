@@ -27,15 +27,12 @@ import dressWoman13 from 'assets/woman/model6-2.png';
 import dressWoman14 from 'assets/woman/model7-2.png';
 
 const initialState = {
-  clicked: false,
-  sidebarOpen: false,
-  hamburgerClicked: false,
+  sidebarOpen: null,
   hamburgerAnimStart: false,
   productQuantity: 0,
   productTab: [],
   SumOfAllPrices: 0,
   cartIconAnim: false,
-  backgroundImage:false,
   Man: [
     [jacketMan1, 'Kurtka męska model 1 ', 150,null],
     [jacketMan2, 'Kurtka męska model 2 ', 250,null],
@@ -70,33 +67,31 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         sidebarOpen: !state.sidebarOpen,
         hamburgerAnimStart: !state.hamburgerAnimStart,
-        hamburgerClicked: true,
         cartIconAnim: false,
         redirect: false,
-        clicked: true,
-        imageLoaded: false,
-        backgroundImage: false
       };
     case 'HOME_CLICKED':
       return {
         ...state,
-        sidebarOpen: false,
+        sidebarOpen: null,
         hamburgerAnimStart: false,
-        hamburgerClicked: false,
         cartIconAnim: false,
         redirect: false,
-        clicked:false,
-        backgroundImage: false
+
       };
 
     case 'YOURCART_CLICKED':
       return {
         ...state,
-        sidebarOpen: false,
+        sidebarOpen: null,
         hamburgerAnimStart: false,
-        hamburgerClicked: false,
         cartIconAnim: false,
-        backgroundImage: false
+
+      };
+    case 'REDIRECT_RESET':
+      return {
+        ...state,
+      redirect:false,
       };
     case 'CART_CLICKED':
       return {
@@ -119,7 +114,6 @@ const rootReducer = (state = initialState, action) => {
         },
         cartIconAnim: true,
         SumOfAllPrices: state.SumOfAllPrices+ action.payload.productPrice,
-        backgroundImage: false
       };
     case 'PLUS_CLICKED':
       return {
@@ -140,7 +134,6 @@ const rootReducer = (state = initialState, action) => {
     case 'MINUS_CLICKED':
       return {
         ...state,
-
         productTab: {
           ...state.productTab,
           [action.payload.productInfo]: {
@@ -181,24 +174,24 @@ const rootReducer = (state = initialState, action) => {
       case 'DETAIL_CLICKED':
       return {
         ...state,
-        sidebarOpen: false,
+        sidebarOpen: null,
         hamburgerAnimStart: false,
-        hamburgerClicked: false,
         redirect: true,
         actualItem: action.payload.image,
         actualInfo: action.payload.info,
-        backgroundImage: true
       };
       case 'RETURN_CLICKED':
       return {
         ...state,
-        sidebarOpen: false,
+        sidebarOpen: null,
         hamburgerAnimStart: false,
-        hamburgerClicked: false,
         cartIconAnim: false,
         redirect: false,
-        clicked:true,
-        backgroundImage: false
+      };
+      case 'SIDEBAR_STOP_ANIM':
+      return {
+        ...state,
+        sidebarOpen: null,
       };
     default:
       return state;

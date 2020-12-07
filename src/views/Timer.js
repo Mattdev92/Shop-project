@@ -3,62 +3,78 @@ import styled from 'styled-components';
 import MainTemplate from 'templates/MainTemplate/MainTemplate';
 
 const Wrapper = styled.div`
-  position: absolute;
-  width: 60vw;
-  height: 60vh;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: black;
-  opacity: 50%;
-  color: white;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+    position: absolute;
+    width: 60vw;
+    height: 60vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 `;
 class Timer extends React.Component {
-  state = {
-    startValue: 0,
-    delay: 1000,
-    start: true,
-  };
-  handleStart = () => {
-    this.intervalll = setInterval(this.handleCount, this.state.delay);
-    this.setState({
-      start: false,
-    });
-  };
-  handleCount = () => {
-    this.setState({
-      startValue: this.state.startValue + 1,
-    });
-  };
+    state = {
+        startValue: 0,
+        delay: 1000,
+        start: true,
+    };
+    handleStart = () => {
+        this.intervalll = setInterval(
+            this.handleCount,
+            this.state.delay,
+        );
+        this.setState({
+            start: false,
+        });
+    };
+    handleCount = () => {
+        this.setState({
+            startValue: this.state.startValue + 1,
+        });
+    };
 
-  handleStop = () => {
-    clearInterval(this.intervalll);
-    this.setState({
-      start: true,
-    });
-  };
-  handleReset = () => {
-    this.setState({
-      startValue: 0,
-    });
-  };
-  render() {
-    const { handleStart, handleStop, handleReset } = this;
-    const { startValue } = this.state;
-    return (
-      <MainTemplate>
-        <Wrapper>
-          Stoper
-          {this.state.start && <button onClick={handleStart}>start</button>}
-          <button onClick={handleStop}>stop</button>
-          <button onClick={handleReset}>reset</button>
-          <h1>{startValue}</h1>
-        </Wrapper>
-      </MainTemplate>
-    );
-  }
+    handleStop = () => {
+        clearInterval(this.intervalll);
+        this.setState({
+            start: true,
+        });
+    };
+    handleReset = () => {
+        this.setState({
+            startValue: 0,
+        });
+    };
+    render() {
+        const {
+            handleStart,
+            handleStop,
+            handleReset,
+        } = this;
+        const { startValue } = this.state;
+        return (
+            <MainTemplate>
+                <Wrapper>
+                    Stoper
+                    {this.state.start && (
+                        <button
+                            onClick={handleStart}
+                        >
+                            start
+                        </button>
+                    )}
+                    <button onClick={handleStop}>
+                        stop
+                    </button>
+                    <button onClick={handleReset}>
+                        reset
+                    </button>
+                    <h1>{startValue}</h1>
+                </Wrapper>
+            </MainTemplate>
+        );
+    }
 }
 export default Timer;

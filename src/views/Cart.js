@@ -10,14 +10,13 @@ import PropTypes from 'prop-types';
 import { TimelineMax } from 'gsap';
 
 const Wrapper = styled.div`
-  background-color: rgb(243, 243, 245);
-  margin: -90vh 5px 5vh;
+  opacity:80%;
+  background-color: black;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   max-width: 100vw;
-  opacity: 80%;
   @media (max-width: 440px) {
     margin: 0px;
     padding: 0px;
@@ -30,14 +29,18 @@ const Wrapper = styled.div`
   }
 `;
 const ItemWrapper = styled.div`
-  background-color: white;
+background-color:black;
+color:white;
   margin: 20px 5px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
   max-width: 100vw;
+  width:85vw;
   font-size: 2rem;
+  font-family: 'Jost', sans-serif;
+  font-size:14px;
   @media (max-width: 440px) {
     flex-direction: column;
     justify-content: center;
@@ -53,27 +56,20 @@ const Img = styled.img`
 `;
 
 const Button = styled.button`
-  background-color: ${({ color }) =>
-    color === 'green'
-      ? 'green'
-      : color === 'red'
-      ? 'red'
-      : color === 'ZAMAWIAM'
-      ? 'rgb(238,94,98)'
-      : 'blue'};
+  background-color: white;
   height: 30px;
-  margin: ${({ color }) =>
-    color === 'green'
+  margin: ${({ type }) =>
+    type === 'add'
       ? '10px 0px 0 30px'
-      : color === 'ZAMAWIAM'
+      : type === 'ZAMAWIAM'
       ? '10px'
       : '10px 30px'};
-  width: ${({ color }) =>
-    color === 'ZAMAWIAM' ? '150px' : '30px'};
+  width: ${({ type }) =>
+    type === 'ZAMAWIAM' ? '150px' : '30px'};
   border: none;
   border-radius: 5px;
   font-size: 1.5rem;
-  color: white;
+  color: black;
   &:hover {
     cursor: pointer;
   }
@@ -90,12 +86,13 @@ const PriceSection = styled.h1`
   width: 150px;
   margin: 0px 10px;
   font-size: 1.5rem;
-  color: black;
+  color: white;
   text-align: center;
 `;
 const AllProductPrice = styled.h1`
+background-color: black;
   font-size: 2rem;
-  color: black;
+  color: white;
   font-weight: bold;
   @media (max-width: 440px) {
     font-size: 1rem;
@@ -103,53 +100,26 @@ const AllProductPrice = styled.h1`
 `;
 const CourtTitle = styled.h1`
   font-size: 1rem;
-  color: black;
+  color: white;
   font-weight: bold;
 `;
 
 class Cart extends React.Component {
   constructor(props) {
     super(props);
-    this.myButton = [];
-    this.myImage = [];
-    this.myButtonSection = [];
-    this.myPriceSection = [];
-    this.mySecondPriceSection = [];
+    this.myItem = [];
     this.tlMain = new TimelineMax();
   }
 
   componentDidMount() {
     // use the node ref to create the animation
     if (window.screen.width > 400) {
-      this.myButton.map((item, number) =>
-        this.tlMain
-          .fromTo(
-            this.myButton[number],
+     this.myItem.map(item=>
+      this.tlMain.fromTo(
+            this.myItem[item],
             { autoAlpha: 0, x: 200 },
-            { duration: 0.2, autoAlpha: 1, x: 0 },
-          )
-          .fromTo(
-            this.myImage[number],
-            { autoAlpha: 0, x: 200 },
-            { duration: 0.2, autoAlpha: 1, x: 0 },
-          )
-          .fromTo(
-            this.myButtonSection[number],
-            { autoAlpha: 0, x: -200 },
-            { duration: 0.2, autoAlpha: 1, x: 0 },
-          )
-          .fromTo(
-            this.myPriceSection[number],
-            { autoAlpha: 0, y: 100 },
-            { duration: 0.2, autoAlpha: 1, y: 0 },
-          )
-          .fromTo(
-            this.mySecondPriceSection[number],
-            { autoAlpha: 0, x: 100 },
-            { duration: 0.2, autoAlpha: 1, x: 0 },
-          ),
-      );
-    }
+            { duration: 0.2, autoAlpha: 1, x: 0 }, ))
+     } 
   }
 
   render() {
@@ -163,7 +133,7 @@ class Cart extends React.Component {
       sidebarOpen,
     } = this.props;
     return (
-      <MainTemplate display>
+      <MainTemplate>
         <Wrapper sidebaropen={sidebarOpen}>
           {productQuantity !== 0 && (
             <CourtTitle>
@@ -171,9 +141,10 @@ class Cart extends React.Component {
             </CourtTitle>
           )}
           {Object.keys(productTab).map(
-            (key, number) => {
+            (key,number) => {
               return (
-                <ItemWrapper key={key}>
+                <ItemWrapper key={key} ref={(div) =>
+                  (this.myItem[number] = div)}>
                   <Button
                     onClick={() =>
                       DeleteClicked(
@@ -182,12 +153,8 @@ class Cart extends React.Component {
                           .productInfo,
                       )
                     }
-                    color="red"
-                    ref={(button) =>
-                      (this.myButton[
-                        number
-                      ] = button)
-                    }
+                    type="delete"
+                   
                   >
                     -
                   </Button>
@@ -196,19 +163,11 @@ class Cart extends React.Component {
                       productTab[key].productImage
                     }
                     alt="error"
-                    ref={(image) =>
-                      (this.myImage[
-                        number
-                      ] = image)
-                    }
+                    
                   />
                   {productTab[key].productInfo}
                   <ButtonSection
-                    ref={(section) =>
-                      (this.myButtonSection[
-                        number
-                      ] = section)
-                    }
+                    
                   >
                     <Button
                       onClick={() =>
@@ -218,7 +177,7 @@ class Cart extends React.Component {
                             .productInfo,
                         )
                       }
-                      color="green"
+                      type="add"
                     >
                       +
                     </Button>
@@ -232,20 +191,16 @@ class Cart extends React.Component {
                               .productInfo,
                           )
                         }
-                        color="red"
+                        type="delete"
                       >
                         -
                       </Button>
                     ) : (
-                      <Button color="red" />
+                      <Button type="delete" />
                     )}
                   </ButtonSection>
                   <PriceSection
-                    ref={(section) =>
-                      (this.myPriceSection[
-                        number
-                      ] = section)
-                    }
+                    
                   >
                     {
                       productTab[key]
@@ -253,11 +208,7 @@ class Cart extends React.Component {
                     }
                   </PriceSection>
                   <PriceSection
-                    ref={(section) =>
-                      (this.mySecondPriceSection[
-                        number
-                      ] = section)
-                    }
+                    
                   >
                     {productTab[key].TotalPrice}{' '}
                     zł
@@ -273,7 +224,7 @@ class Cart extends React.Component {
           </AllProductPrice>
           {productQuantity !== 0 && (
             <NavLink to="/Buy">
-              <Button color="ZAMAWIAM">
+              <Button type="ZAMAWIAM">
                 ZAMAWIAM
               </Button>
             </NavLink>

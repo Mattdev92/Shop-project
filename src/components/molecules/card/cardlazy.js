@@ -8,15 +8,20 @@ top:50%;
 left:50%;
 transform:translate(-50%,-50%);
 `;
+const CardWrapper=styled.div`
+display:flex;
+justify-content:center;
+align-items:center;
+`;
 const Cardlazy=(props)=> {
   return (
-    <div>
+    <CardWrapper>
       <Suspense fallback={<Wrapper><AwsomeComponent/></Wrapper>}>
         <section>
           <OtherComponent {...props}/>
         </section>
       </Suspense>
-    </div>
+    </CardWrapper>
   );
 }
 export default Cardlazy;

@@ -20,23 +20,18 @@ body {
   font-size: 1,6rem;
   margin:0;
   padding:0;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Jost', sans-serif;
 }
 .slides .slick-prev,
 .slides .slick-next {
   position: absolute;
   top: 50%;
   z-index: 1;
+  background-color:black;
+  opacity:40%;
 }
 .slides {
   position: relative;
-}
-
-.slides .slick-prev,
-.slides .slick-next {
-  position: absolute;
-  top: 50%;
-  z-index:1;
 }
 
 .slides .slick-prev {

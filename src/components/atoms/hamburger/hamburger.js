@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import React from 'react';
 import {connect} from 'react-redux';
-import {HamburgerClicked} from 'actions';
+import {hamburgerClicked} from 'actions';
 import PropTypes from 'prop-types';
 
 const Wrapper = styled.div`
@@ -23,8 +23,8 @@ const Wrapper = styled.div`
   align-items: center;
   z-index: 998; 
  }
-  `;
 
+`;
 const HamburgerLine = styled.span`
   display: block;
   height: 1px;
@@ -37,6 +37,8 @@ const HamburgerLine = styled.span`
       height: 2px;
       transform: translateY(${position}) rotate(${rotation});
       transition: all 0.3s 0.1s ease-out;
+      background-color: white;
+      z-index:999;
     `}
 `;
 
@@ -46,11 +48,13 @@ const HamburgerMiddleLine = styled(HamburgerLine)`
     css`
       visibility: hidden;
       transition: visibility 0.1s ease-out;
+      background-color: white;
+      z-index:999;
     `}
 `;
 
-const Hamburger = ({ HamburgerClicked, hamburgerAnimStart,sidebarOpen }) => (
-  <Wrapper onClick={HamburgerClicked} sidebarOpen={sidebarOpen}>
+const Hamburger = ({ hamburgerClicked, hamburgerAnimStart,sidebarOpen}) => (
+  <Wrapper onClick={hamburgerClicked} sidebarOpen={sidebarOpen} >
     <HamburgerLine hamburgerAnim={hamburgerAnimStart} rotation={'45deg'} position="13px" />
     <HamburgerMiddleLine hamburgerAnim={hamburgerAnimStart} />
     <HamburgerLine hamburgerAnim={hamburgerAnimStart} rotation={'-45deg'} position="-13px" />
@@ -62,7 +66,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  HamburgerClicked: () => dispatch(HamburgerClicked()),
+  hamburgerClicked: () => dispatch(hamburgerClicked()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Hamburger);

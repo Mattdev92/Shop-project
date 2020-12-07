@@ -9,9 +9,10 @@ import { routes } from 'routes';
 import PropTypes from 'prop-types';
 
 const Wrapper = styled.div`
-  padding: auto;
   position: relative;
   height: 580px;
+  overflow: hidden;
+  max-width: 333px;
   :hover {
     cursor: pointer;
     transition: all 1.3s ease-out;
@@ -21,8 +22,8 @@ const Wrapper = styled.div`
 `;
 const DiscountDescription = styled.h1`
   position: absolute;
-  top: 5px;
-  left: 50%;
+  bottom: 20px;
+  right: 0;
   transform: translate(-50%, -50%);
   font-size: 1rem;
   font-family: 'Roboto', sans-serif;
@@ -40,20 +41,13 @@ const Description = styled.div`
 `;
 const PriceDescription = styled.div`
   position: absolute;
-  bottom: 8px;
+  bottom: 6px;
   width: 100%;
   font-size: 16px;
   font-family: 'Roboto', sans-serif;
   text-align: center;
   color: #191919;
   font-weight: 700 !important;
-`;
-
-const ItemImg = styled.img`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 `;
 
 const CartImg = styled.img`
@@ -71,7 +65,7 @@ const CartImg = styled.img`
 `;
 const ProductInCart = styled.h3`
   position: absolute;
-  bottom: -17px;
+  bottom: 40px;
   left: 0;
   width: 100%;
   height: 14px;
@@ -100,7 +94,7 @@ const Card = ({
     return (
       <Redirect
         to={`${
-          product[1].includes('męska')
+          product[1].includes('męsk')
             ? routes.OnDetails
             : routes.OnaDetails
         }${product[1]}`}
@@ -114,13 +108,18 @@ const Card = ({
           -20%
         </DiscountDescription>
       )}
-      <ItemImg
-        src={change&& product[3]!==null? product[3] : product[0]}
+      <img
+        src={
+          change && product[3] !== null
+            ? product[3]
+            : product[0]
+        }
         onClick={() =>
           DetailClicked(product[0], product[1])
         }
         onMouseEnter={() => setChange(true)}
         onMouseLeave={() => setChange(false)}
+        alt="Image1"
       />
       <Description>{product[1]}</Description>
       <PriceDescription>

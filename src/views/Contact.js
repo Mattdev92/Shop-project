@@ -42,7 +42,10 @@ const Form = styled.form`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: rgb(255, 232, 0);
+  text-align:center;
+  /* background-color: rgb(255, 232, 0); */
+  background-color:black;
+  color:white;
   @media(max-width:440px){
     width: 80vw;
   height: 80vh;
@@ -71,7 +74,7 @@ const Input = styled.input`
   align-items: left;
   border: none;
   border-bottom: 3px solid black;
-  background-color: rgb(255, 232, 0);
+  text-align:center;
   @media(max-width:440px){
     width:60vw;
   }
