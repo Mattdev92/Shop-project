@@ -19,43 +19,21 @@ const sizes = ['S', 'M', 'L', 'XL', 'XXL'];
 const DetailSection = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    @media (max-width: 440px) {
-    }
-`;
-
-const ImageWrapper=styled.div`
- position: relative;
-  height: 580px;
-  overflow: hidden;
-  max-width: 333px;
-  :hover {
-    cursor: pointer;
-    transition: all 1.3s ease-out;
-  }
-  @media (max-width: 440px) {
-  }
 `;
 
 const DescriptionSection = styled.section`
-    padding: 0px auto;
-    margin: 5px;
+    padding: 0;
+    margin:0;
     display: flex;
     flex-direction: row;
     width: 60vw;
     justify-content: center;
-    align-items: center;
+    align-items: top;
     text-align: justify;
     @media (max-width: 440px) {
         flex-direction: column;
-    }
-`;
-
-const Title = styled.h1`
-    font-size: 1rem;
-    @media (max-width: 440px) {
-        font-size: 0.5rem;
     }
 `;
 
@@ -67,17 +45,11 @@ const Button = styled.button`
     color: white;
     border-radius: 8px;
     font-size: 1.5rem;
-    text-align:center;
-    text-decoration:none;
+    text-align: center;
+    text-decoration: none;
     &:hover {
         cursor: pointer;
     }
-`;
-
-const List = styled.ul`
-    display: flex;
-    justify-content: center;
-    list-style: none;
 `;
 
 const InfoWrapper = styled.div`
@@ -85,12 +57,11 @@ const InfoWrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: left;
-    margin: 20px;
+    margin-left:100px;
     @media (max-width: 440px) {
         margin: 2px;
     }
 `;
-
 const ListItem = styled.h5`
     margin: 10px 2px;
 `;
@@ -98,13 +69,30 @@ const ListItem = styled.h5`
 const ItemSize = styled.option`
     margin: 5px;
 `;
-
+const CustomSelect=styled.select`
+-webkit-appearance:none;
+-ms-appearance:none;
+-moz-appearance:none;
+-o-appearance:none;
+appearance: none;
+display:block;
+margin:10px 0;
+padding: 10px 80px 10px 10px;
+background-color: #222;
+color: white;
+border-radius: 4px;
+border: 2px solid white;
+width:280px;
+text-align:center;
+&:hover {
+        cursor: pointer;
+    }
+`;
 const Details = ({
-    actualItem,
     actualInfo,
     ReturnClicked,
     RedirectReset,
-    productAll
+    actualProduct,
 }) => {
     const myImage = useRef(null);
     const myInfoWrapper = useRef(null);
@@ -171,81 +159,81 @@ const Details = ({
     };
     return (
         <>
-        <MainTemplate>
-            <DetailSection
-               
-            >
-                <Title>{actualInfo}</Title>
-                <DescriptionSection>
-                  <ImageWrapper>
-                   <img
-                        src={actualItem}
-                        alt="product"
-                        ref={myImage}
-                    />
-                    {/* <CardLazy product={productAll[0]} ref={myImage}/> */}
-                  </ImageWrapper>
-                    <InfoWrapper
-                        ref={myInfoWrapper}
-                    >
-                        <h3>Dostępne rozmiary</h3>
-                        <List>
-                            <select
-                                value={actualSize}
-                                onChange={(e) => {
-                                    handleChecked(
+            <MainTemplate>
+                <DetailSection>
+                    <DescriptionSection>
+                            <CardLazy
+                                product={
+                                    actualProduct
+                                }
+                                ref={myImage}
+                            />
+                        <InfoWrapper
+                            ref={myInfoWrapper}
+                        >
+                                <CustomSelect
+                                    value={
+                                        actualSize
+                                    }
+                                    onChange={(
                                         e,
-                                    );
-                                }}
-                            >
-                                {sizes.map(
-                                    (item) => (
-                                        <ItemSize
-                                            value={
-                                                item
-                                            }
-                                            key={
-                                                item
-                                            }
-                                        >
-                                            {item}
-                                        </ItemSize>
-                                    ),
-                                )}
-                            </select>
-                        </List>
-                        {available
-                            ? `Rozmiar ${actualSize} jest dostepny`
-                            : `Rozmiar ${actualSize} nie jest dostepny`}
-                        <ListItem>
-                            Dostawa 48 godzin
-                        </ListItem>
-                        <ListItem>
-                            100 dni na zwrot
-                        </ListItem>
-                        <ListItem>
-                            Darmowa wysyłka od
-                            200zł
-                        </ListItem>
-                    </InfoWrapper>
-                </DescriptionSection>
+                                    ) => {
+                                        handleChecked(
+                                            e,
+                                        );
+                                    }}
+                                >
+                                    {sizes.map(
+                                        (
+                                            item,
+                                        ) => (
+                                            <ItemSize
+                                                value={
+                                                    item
+                                                }
+                                                key={
+                                                    item
+                                                }
+                                            >
+                                                {
+                                                    item
+                                                }
+                                            </ItemSize>
+                                        ),
+                                    )}
+                                </CustomSelect>
+                            {available
+                                ? `Rozmiar ${actualSize} jest dostepny`
+                                : `Rozmiar ${actualSize} nie jest dostepny`}
+                            <ListItem>
+                                Dostawa 48 godzin
+                            </ListItem>
+                            <ListItem>
+                                100 dni na zwrot
+                            </ListItem>
+                            <ListItem>
+                                Darmowa wysyłka od
+                                200zł
+                            </ListItem>
+                        </InfoWrapper>
+                    </DescriptionSection>
                     <Button
-                    as={NavLink}
-                    to={`${
-                        actualInfo.includes(
-                            'męsk',
-                        )
-                            ? routes.On
-                            : routes.Ona
-                    }`}
+                        as={NavLink}
+                        to={`${
+                            actualInfo.includes(
+                                'męsk',
+                            )
+                                ? routes.On
+                                : routes.Ona
+                        }`}
                         onClick={ReturnClicked}
                         ref={myButton}
                     >
                         Powrót
                     </Button>
-            </DetailSection>
-        </MainTemplate>
-        <Footer/>
+                </DetailSection>
+            </MainTemplate>
+            <Footer />
         </>
     );
 };
@@ -254,13 +242,12 @@ const mapStateToProps = (state) => {
     const {
         actualItem,
         actualInfo,
-        productAll
-      
+        actualProduct,
     } = state;
     return {
         actualItem,
         actualInfo,
-        productAll
+        actualProduct,
     };
 };
 const mapDispatchToProps = (dispatch) => ({

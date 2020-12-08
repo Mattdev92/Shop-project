@@ -83,11 +83,11 @@ export const textFilter =(eventText)=>{
         }
     }   
 }
-export const DetailClicked =(image, info, prop2,prop3)=>{
+export const DetailClicked =(image, info, product)=>{
     return{
         type: "DETAIL_CLICKED",
         payload: {
-               image, info, prop2,prop3     
+               image, info, product    
         }
     }   
 }

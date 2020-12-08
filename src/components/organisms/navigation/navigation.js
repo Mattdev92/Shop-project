@@ -207,6 +207,7 @@ const Navigation = ({
             sidebaropen={sidebarOpen}
                 to="Okazje"
                 smooth={true}
+                spy={true}
                 duration={1000}
                 onClick={()=>sidebarStopAnim()}
             >

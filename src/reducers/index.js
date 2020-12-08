@@ -27,7 +27,7 @@ import dressWoman13 from 'assets/woman/model6-2.png';
 import dressWoman14 from 'assets/woman/model7-2.png';
 
 const initialState = {
-  productAll: [],
+  actualProduct: null,
   sidebarOpen: null,
   hamburgerAnimStart: false,
   productQuantity: 0,
@@ -175,6 +175,7 @@ const rootReducer = (state = initialState, action) => {
       case 'DETAIL_CLICKED':
       return {
         ...state,
+        actualProduct: action.payload.product,
         sidebarOpen: null,
         hamburgerAnimStart: false,
         redirect: true,

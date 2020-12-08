@@ -115,7 +115,7 @@ const Card = ({
             : product[0]
         }
         onClick={() =>
-          DetailClicked(product[0], product[1], product[2],product[3])
+          DetailClicked(product[0], product[1], product)
         }
         onMouseEnter={() => setChange(true)}
         onMouseLeave={() => setChange(false)}
@@ -176,9 +176,9 @@ const mapDispatchToProps = (dispatch) => ({
         itemQuantity,
       ),
     ),
-  DetailClicked: (actualItem, actualInfo) =>
+  DetailClicked: (actualItem, actualInfo, actualProduct) =>
     dispatch(
-      DetailClicked(actualItem, actualInfo),
+      DetailClicked(actualItem, actualInfo, actualProduct),
     ),
 });
 export default connect(
