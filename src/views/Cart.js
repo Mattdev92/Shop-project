@@ -133,6 +133,7 @@ class Cart extends React.Component {
       sidebarOpen,
     } = this.props;
     return (
+      <>
       <MainTemplate>
         <Wrapper sidebaropen={sidebarOpen}>
           {productQuantity !== 0 && (
@@ -231,6 +232,7 @@ class Cart extends React.Component {
           )}
         </Wrapper>
       </MainTemplate>
+          </>
     );
   }
 }

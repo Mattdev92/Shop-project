@@ -27,6 +27,7 @@ import dressWoman13 from 'assets/woman/model6-2.png';
 import dressWoman14 from 'assets/woman/model7-2.png';
 
 const initialState = {
+  productAll: [],
   sidebarOpen: null,
   hamburgerAnimStart: false,
   productQuantity: 0,
@@ -192,6 +193,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         sidebarOpen: null,
+        hamburgerAnimStart:false
       };
     default:
       return state;

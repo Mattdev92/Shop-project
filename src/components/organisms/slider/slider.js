@@ -10,6 +10,9 @@ const SliderWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
+const SliderSection = styled.section`
+  margin-bottom:20px;
+  `;
 
 class SaleSlider extends React.Component {
   render() {
@@ -17,7 +20,7 @@ class SaleSlider extends React.Component {
       dots: true,
       infinite: false,
       speed: 500,
-      slidesToShow: 3,
+      slidesToShow: window.innerWidth<500?1:3,
       slidesToScroll: 1,
       arrows: true,
       className: 'slides',
@@ -25,22 +28,22 @@ class SaleSlider extends React.Component {
     };
     const { Woman, Man } = this.props;
     return (
-      <section id="Okazje">
+      <SliderSection id="Okazje">
         <Slider {...settings}>
           {Woman.concat(Man)
             .filter((product) => product[2] < 60)
             .map((product) => (
-              <SliderWrapper>
+              <SliderWrapper key={product}>
                 <Cardlazy
                   product={product}
-                  key={product}
+                  
                 >
                   {product[1]} {product[2]}zł
                 </Cardlazy>
               </SliderWrapper>
             ))}
         </Slider>
-      </section>
+      </SliderSection>
     );
   }
 }
@@ -53,7 +56,6 @@ SaleSlider.propTypes = {
   Man: PropTypes.array,
   Woman: PropTypes.array,
   eventText: PropTypes.string,
-  sidebarOpen: PropTypes.bool,
 };
 export default connect(
   mapStateToProps,

@@ -5,6 +5,7 @@ import MainTemplate from 'templates/MainTemplate/MainTemplate';
 import { Formik } from 'formik';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Footer from 'components/organisms/footer/footer';
 const tab = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const tab1 = [
     11,
@@ -52,8 +53,8 @@ const Wrapper = styled.div`
     width: 100vw;
     @media (max-width: 440px) {
         margin: 0;
-        ${({ sidebarOpen }) =>
-            sidebarOpen &&
+        ${({ sidebaropen }) =>
+            sidebaropen &&
             css`
                 display: none;
             `}
@@ -68,6 +69,7 @@ const Form = styled.form`
     justify-content: flex-start;
     align-items: center;
     background-color: black;
+    box-shadow: 0 0 30px #333;
     color:white;
     @media (max-width: 440px) {
         width: 80vw;
@@ -125,8 +127,9 @@ const FinalForm = ({
     productQuantity,
 }) => {
     return (
+        <>
         <MainTemplate display>
-            <Wrapper sidebarOpen={sidebarOpen}>
+            <Wrapper sidebaropen={sidebarOpen}>
                 <ContactTitle>
                     Formularz zakupu
                 </ContactTitle>
@@ -306,6 +309,8 @@ const FinalForm = ({
                 )}
             </Wrapper>
         </MainTemplate>
+        <Footer/>
+        </>
     );
 };
 const mapStateToProps = (state) => {

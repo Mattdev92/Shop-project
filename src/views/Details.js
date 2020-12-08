@@ -12,6 +12,8 @@ import { ReturnClicked } from 'actions';
 import { RedirectReset } from 'actions';
 import PropTypes from 'prop-types';
 import gsap from 'gsap';
+import Footer from 'components/organisms/footer/footer';
+import CardLazy from 'components/molecules/card/cardlazy';
 
 const sizes = ['S', 'M', 'L', 'XL', 'XXL'];
 const DetailSection = styled.div`
@@ -22,6 +24,7 @@ const DetailSection = styled.div`
     @media (max-width: 440px) {
     }
 `;
+
 const ImageWrapper=styled.div`
  position: relative;
   height: 580px;
@@ -34,6 +37,7 @@ const ImageWrapper=styled.div`
   @media (max-width: 440px) {
   }
 `;
+
 const DescriptionSection = styled.section`
     padding: 0px auto;
     margin: 5px;
@@ -55,26 +59,27 @@ const Title = styled.h1`
     }
 `;
 
-
-const Wrapper = styled.button``;
 const Button = styled.button`
-    margin-bottom: 20px;
+    background-color: black;
     border: none;
-    background-color: blue;
     width: 130px;
     height: 30px;
     color: white;
     border-radius: 8px;
     font-size: 1.5rem;
+    text-align:center;
+    text-decoration:none;
     &:hover {
         cursor: pointer;
     }
 `;
+
 const List = styled.ul`
     display: flex;
     justify-content: center;
     list-style: none;
 `;
+
 const InfoWrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -85,9 +90,11 @@ const InfoWrapper = styled.div`
         margin: 2px;
     }
 `;
+
 const ListItem = styled.h5`
     margin: 10px 2px;
 `;
+
 const ItemSize = styled.option`
     margin: 5px;
 `;
@@ -97,7 +104,7 @@ const Details = ({
     actualInfo,
     ReturnClicked,
     RedirectReset,
-    sidebarOpen,
+    productAll
 }) => {
     const myImage = useRef(null);
     const myInfoWrapper = useRef(null);
@@ -163,18 +170,20 @@ const Details = ({
         }
     };
     return (
+        <>
         <MainTemplate>
             <DetailSection
-                sidebarOpen={sidebarOpen}
+               
             >
                 <Title>{actualInfo}</Title>
                 <DescriptionSection>
                   <ImageWrapper>
-                    <img
+                   <img
                         src={actualItem}
                         alt="product"
                         ref={myImage}
                     />
+                    {/* <CardLazy product={productAll[0]} ref={myImage}/> */}
                   </ImageWrapper>
                     <InfoWrapper
                         ref={myInfoWrapper}
@@ -220,7 +229,7 @@ const Details = ({
                         </ListItem>
                     </InfoWrapper>
                 </DescriptionSection>
-                <Wrapper
+                    <Button
                     as={NavLink}
                     to={`${
                         actualInfo.includes(
@@ -229,16 +238,15 @@ const Details = ({
                             ? routes.On
                             : routes.Ona
                     }`}
-                >
-                    <Button
                         onClick={ReturnClicked}
                         ref={myButton}
                     >
                         Powrót
                     </Button>
-                </Wrapper>
             </DetailSection>
         </MainTemplate>
+        <Footer/>
+        </>
     );
 };
 
@@ -246,12 +254,13 @@ const mapStateToProps = (state) => {
     const {
         actualItem,
         actualInfo,
-        sidebarOpen,
+        productAll
+      
     } = state;
     return {
         actualItem,
         actualInfo,
-        sidebarOpen,
+        productAll
     };
 };
 const mapDispatchToProps = (dispatch) => ({
@@ -267,5 +276,4 @@ export default connect(
 Details.propTypes = {
     actualItem: PropTypes.string,
     actualInfo: PropTypes.string,
-    sidebarOpen: PropTypes.bool,
 };

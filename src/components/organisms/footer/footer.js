@@ -4,9 +4,8 @@ import styled from 'styled-components';
 const Wrapper = styled.nav`
   display: flex;
   width: 100vw;
-  height: 5vh;
-  opacity: 30%;
-  background-color: white;
+  height: 20vh;
+  background-color: rgb(239,239,239);
   color: black;
   flex-direction: row;
   align-items: center;

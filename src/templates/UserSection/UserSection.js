@@ -24,8 +24,8 @@ const InnerWrapper = styled.div`
         justify-content: center;
         grid-gap: 100px;
         align-items: center;
-        ${({ sidebarOpen }) =>
-            sidebarOpen &&
+        ${({ sidebaropen }) =>
+            sidebaropen &&
             css`
                 display: none;
             `}
@@ -93,7 +93,7 @@ class UserTemplate extends React.Component {
         return (
             <div>
                 <FilterWrapper
-                    sidebarOpen={sidebarOpen}
+                    sidebaropen={sidebarOpen}
                 >
                     <Img/>
                     <Input
@@ -109,7 +109,7 @@ class UserTemplate extends React.Component {
                 </FilterWrapper>
                 
                 <InnerWrapper
-                    sidebarOpen={sidebarOpen}
+                    sidebaropen={sidebarOpen}
                     ref={(card) =>
                         (this.myCard = card)
                     }

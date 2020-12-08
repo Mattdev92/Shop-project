@@ -87,7 +87,6 @@ const Card = ({
   CartClicked,
   DetailClicked,
   redirect,
-  sidebarOpen,
 }) => {
   const [change, setChange] = useState(false);
   if (redirect) {
@@ -101,8 +100,9 @@ const Card = ({
       />
     );
   }
+
   return (
-    <Wrapper sidebarOpen={sidebarOpen}>
+    <Wrapper>
       {product[2] <= 60 && (
         <DiscountDescription>
           -20%
@@ -115,7 +115,7 @@ const Card = ({
             : product[0]
         }
         onClick={() =>
-          DetailClicked(product[0], product[1])
+          DetailClicked(product[0], product[1], product[2],product[3])
         }
         onMouseEnter={() => setChange(true)}
         onMouseLeave={() => setChange(false)}
@@ -155,12 +155,10 @@ const mapStateToProps = (state) => {
   const {
     productTab,
     redirect,
-    sidebarOpen,
   } = state;
   return {
     productTab: productTab,
     redirect: redirect,
-    sidebarOpen: sidebarOpen,
   };
 };
 const mapDispatchToProps = (dispatch) => ({
@@ -194,5 +192,4 @@ Card.propTypes = {
     PropTypes.array,
   ]),
   redirect: PropTypes.bool,
-  sidebarOpen: PropTypes.bool,
 };

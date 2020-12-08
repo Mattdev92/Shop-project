@@ -1,19 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
 import MainTemplate from 'templates/MainTemplate/MainTemplate';
+import Footer from 'components/organisms/footer/footer';
 
 const Wrapper = styled.div`
     position: absolute;
     width: 60vw;
     height: 60vh;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: black;
+    box-shadow: 0 0 30px #333;
     color: white;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+`;
+const Content=styled.div`
+height:65vh;
 `;
 class Timer extends React.Component {
     state = {
@@ -55,6 +60,7 @@ class Timer extends React.Component {
         } = this;
         const { startValue } = this.state;
         return (
+            <>
             <MainTemplate>
                 <Wrapper>
                     Stoper
@@ -74,6 +80,9 @@ class Timer extends React.Component {
                     <h1>{startValue}</h1>
                 </Wrapper>
             </MainTemplate>
+            <Content/>
+            <Footer/>
+            </>
         );
     }
 }

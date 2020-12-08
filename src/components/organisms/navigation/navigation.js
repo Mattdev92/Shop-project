@@ -49,17 +49,37 @@ const Wrapper = styled.nav`
     transition-property: background-color;
     transition-duration: 1s;
     transition-timing-function: linear;
-    ${({ sidebarOpen }) =>
-        sidebarOpen===true &&
+    ${({ sidebaropen }) =>
+        sidebaropen===true &&
         css`
     background-color: black;
+    @media (max-width: 440px) {
+        padding: 0;
+        margin:0;
+        justify-content: space-evenly;
+  }
     `} `;
+
 const InnerWrapper = styled.div`
     margin: 0px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    ${({ sidebaropen }) =>
+        sidebaropen===true &&
+        css`
+    background-color:white;
+    filter: invert(1);
+    transition-property: filter;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+    `}
+    @media (max-width: 440px) {
+        padding: 0;
+        margin:0;
+  }
 `;
+
 const CartWrapper = styled.div`
     display: inline-block;
     margin: 0;
@@ -79,6 +99,7 @@ const Img = styled.img`
     height: 20px;
     margin: 10px 10px;
 `;
+
 const ImgCart = styled.img`
     width: 20px;
     height: 20px;
@@ -104,12 +125,17 @@ const Item = styled(NavLink)`
         text-decoration: none;
         cursor: pointer;
     }
-    ${({ sidebarOpen }) =>
-        sidebarOpen===true &&
+    ${({ sidebaropen }) =>
+        sidebaropen===true &&
         css`
     color: white;
     `} 
+    @media (max-width: 440px) {
+        padding: 0;
+        margin:0;
+  }
 `;
+
 const Sale = styled(Link)`
     color: black;
     transition-property: color;
@@ -124,12 +150,17 @@ const Sale = styled(Link)`
         text-decoration: none;
         cursor: pointer;
     }
-    ${({ sidebarOpen }) =>
-        sidebarOpen===true &&
+    ${({ sidebaropen }) =>
+        sidebaropen===true &&
         css`
     color: white;
     `} 
+    @media (max-width: 440px) {
+        padding: 0;
+        margin:0;
+  }
 `;
+
 const UserSale = styled(NavLink)`
     color: black;
     transition-property: color;
@@ -144,11 +175,15 @@ const UserSale = styled(NavLink)`
         text-decoration: none;
         cursor: pointer;
     }
-    ${({ sidebarOpen }) =>
-        sidebarOpen===true &&
+    ${({ sidebaropen }) =>
+        sidebaropen===true &&
         css`
     color: white;
     `} 
+    @media (max-width: 440px) {
+        padding: 0;
+        margin:0;
+  }
 `;
 
 const Navigation = ({
@@ -159,41 +194,42 @@ const Navigation = ({
     sidebarOpen,location: {pathname},
     sidebarStopAnim
 }) => (
-    <Wrapper sidebarOpen={sidebarOpen}>
-        <Hamburger />
-        {console.log(pathname)
-        }
+    <Wrapper sidebaropen={sidebarOpen}>
+        <Hamburger/>
         {sidebarData.map((item) => (
-            <Item as={NavLink} to={`/${item}`} sidebarOpen={sidebarOpen} onClick={()=>sidebarStopAnim()}>
+            <Item as={NavLink} to={`/${item}`} sidebaropen={sidebarOpen} onClick={()=>sidebarStopAnim()} key={item}>
                 {item}
             </Item>
         ))}
         {
            pathname==="/" ?
            <Sale
-            sidebarOpen={sidebarOpen}
+            sidebaropen={sidebarOpen}
                 to="Okazje"
                 smooth={true}
                 duration={1000}
+                onClick={()=>sidebarStopAnim()}
             >
               
                 Okazje
             </Sale>: <UserSale
-            sidebarOpen={sidebarOpen}
+            sidebaropen={sidebarOpen}
                 as={NavLink}
                 to='/Okazje'
+                onClick={()=>sidebarStopAnim()}
             >
               
                 Okazje
             </UserSale>
 
         }
-        <InnerWrapper>
+        <InnerWrapper sidebaropen={sidebarOpen}>
             <NavLink to="/">
                 <Img
                     src={Home}
                     alt="Home logo"
                     onClick={HomeClicked}
+
                 />
             </NavLink>
             <CartWrapper>

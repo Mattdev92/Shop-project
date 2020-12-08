@@ -85,14 +85,14 @@ const SidebarWrapper = styled.div`
     background-color: black;
     color: white;
     z-index: 998;
-    ${({ sidebarOpen }) =>
-        sidebarOpen &&
+    ${({ sidebaropen }) =>
+        sidebaropen &&
         css`
             transform: translateX(0px);
             animation: ${SidebarAnim} 1s ease-out;
         `}
-    ${({ sidebarOpen }) =>
-        sidebarOpen === false
+    ${({ sidebaropen }) =>
+        sidebaropen === "false"
             ? css`
                   transform: translateX(-310px);
                   animation: ${SidebarAnimBack}
@@ -107,8 +107,8 @@ const SidebarWrapper = styled.div`
         top: 0px;
         margin: 0px;
         padding: 0px;
-        ${({ sidebarOpen }) =>
-            sidebarOpen &&
+        ${({ sidebaropen }) =>
+            sidebaropen &&
             css`
                 z-index: 998;
                 transform: translateX(0px);
@@ -144,15 +144,15 @@ const ItemWrapper = styled.li`
     font-size: 1.2rem;
     text-decoration: none;
     color: white;
-    ${({ sidebarOpen }) =>
-        sidebarOpen &&
+    ${({ sidebaropen }) =>
+        sidebaropen &&
         css`
             transform: translateX(0px);
             animation: ${ItemAnim}
                 ${({ time }) => time} ease-out;
         `}
-    ${({ sidebarOpen }) =>
-        sidebarOpen === false
+    ${({ sidebaropen }) =>
+        sidebaropen === "false"
             ? css`
                   transform: translateX(-100px);
                   animation: ${ItemAnimBack}
@@ -186,8 +186,8 @@ const ItemWrapper = styled.li`
         width: 80vw;
         height: 14vh;
         font-size: 2rem;
-        ${({ sidebarOpen }) =>
-            sidebarOpen &&
+        ${({ sidebaropen }) =>
+            sidebaropen &&
             css`
                 align-items: center;
                 border-bottom: thin solid grey;
@@ -208,7 +208,7 @@ class Sidebar extends React.Component {
         } = this.props;
         return (
             <SidebarWrapper
-                sidebarOpen={sidebarOpen}
+                sidebaropen={sidebarOpen}
             >
                 <ListWrapper>
                     {sidebarData.map(
@@ -221,7 +221,7 @@ class Sidebar extends React.Component {
                                         index
                                     ]
                                 }
-                                sidebarOpen={
+                                sidebaropen={
                                     sidebarOpen
                                 }
                                 onClick={

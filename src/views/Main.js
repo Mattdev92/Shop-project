@@ -7,6 +7,9 @@ import Slider from 'react-slick';
 import { TimelineMax } from 'gsap';
 import Title from 'components/atoms/title/title';
 import SaleSlider from 'components/organisms/slider/slider';
+import Footer from 'components/organisms/footer/footer';
+import {connect} from 'react-redux';
+
 const Wrapper = styled.div`
     background-image: url(${bacgroundImage});
     width: 80vw;
@@ -38,6 +41,7 @@ class Main extends React.Component {
         super(props);
         this.sliderSection = [];
         this.tlMain1 = new TimelineMax();
+
     }
     componentDidMount() {
         // use the node ref to create the animation
@@ -55,13 +59,14 @@ class Main extends React.Component {
         }
     }
     render() {
+        const { sidebarOpen } = this.props;
         const settings = {
             dots: false,
             fade: true,
             infinite: true,
             speed: 500,
             autoplay: true,
-            autoplaySpeed: 4000,
+            autoplaySpeed: 6000,
             slidesToShow: 1,
             arrows: true,
             slidesToScroll: 1,
@@ -69,6 +74,7 @@ class Main extends React.Component {
             lazyLoad: true,
         };
         return (
+            <>
             <MainTemplate>
                 <MainTitle
                     ref={(h1) =>
@@ -81,11 +87,27 @@ class Main extends React.Component {
                     <Wrapper />
                     <WrapperTwo />
                 </Slider>
-                <Title>SALE</Title>
-                <SaleSlider />
+
+                {window.innerWidth<500?(
+                sidebarOpen === true ? null : (
+                    <>
+                        <Title>SALE</Title>
+                        <SaleSlider />
+                    </>
+                )):(
+                    <>
+                    <Title>SALE</Title>
+                    <SaleSlider />
+                </>
+                )}
             </MainTemplate>
+            <Footer/>
+            </>
         );
     }
 }
-
-export default Main;
+const mapStateToProps = (state) => {
+    const { sidebarOpen } = state;
+    return { sidebarOpen };
+};
+export default connect(mapStateToProps,)(Main);

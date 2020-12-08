@@ -9,20 +9,12 @@ const Wrapper = styled.div`
   width: 43px;
   height: 49px;
   background-color: white;
-  ${({sidebarOpen})=>sidebarOpen&&
+  ${({sidebaropen})=>sidebaropen&&
  css`background-color: transparent;`
  }
   &:hover {
     cursor: pointer;
   }
-  @media(max-width: 440px){
-  position:absolute;
-  top:0;
-  left:0;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 998; 
- }
 
 `;
 const HamburgerLine = styled.span`
@@ -54,7 +46,7 @@ const HamburgerMiddleLine = styled(HamburgerLine)`
 `;
 
 const Hamburger = ({ hamburgerClicked, hamburgerAnimStart,sidebarOpen}) => (
-  <Wrapper onClick={hamburgerClicked} sidebarOpen={sidebarOpen} >
+  <Wrapper onClick={hamburgerClicked} sidebaropen={sidebarOpen} >
     <HamburgerLine hamburgerAnim={hamburgerAnimStart} rotation={'45deg'} position="13px" />
     <HamburgerMiddleLine hamburgerAnim={hamburgerAnimStart} />
     <HamburgerLine hamburgerAnim={hamburgerAnimStart} rotation={'-45deg'} position="-13px" />

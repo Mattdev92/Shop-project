@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { YourCartClicked } from 'actions';
 import PropTypes from 'prop-types';
 import MainTemplate from 'templates/MainTemplate/MainTemplate';
+import Footer from 'components/organisms/footer/footer';
 
 class User extends React.Component {
     componentDidUpdate(prevProps) {
@@ -31,6 +32,7 @@ class User extends React.Component {
                         pathname={pathname}
                     />
                 </MainTemplate>
+                <Footer/>
             </>
         );
     }
