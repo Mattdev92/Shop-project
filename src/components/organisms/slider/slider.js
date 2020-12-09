@@ -3,16 +3,7 @@ import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Cardlazy from 'components/molecules/card/cardlazy';
-import styled from 'styled-components';
-
-const SliderWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-const SliderSection = styled.section`
-  margin-bottom:20px;
-  `;
+import {SliderWrapper,SliderSection} from 'components/organisms/slider/slider-styles';
 
 class SaleSlider extends React.Component {
   render() {

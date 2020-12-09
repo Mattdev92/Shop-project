@@ -9,46 +9,43 @@ import MainTemplate from 'templates/MainTemplate/MainTemplate';
 import Footer from 'components/organisms/footer/footer';
 
 class User extends React.Component {
-    componentDidUpdate(prevProps) {
-        if (
-            this.props.cartIconAnim !==
-            prevProps.cartIconAnim
-        ) {
-            return setTimeout(
-                () =>
-                    this.props.YourCartClicked(),
-                900,
-            );
-        }
-    }
-    render() {
-        const {
-            location: { pathname },
-        } = this.props;
-        return (
-            <>
-                <MainTemplate>
-                    <UserSection
-                        pathname={pathname}
-                    />
-                </MainTemplate>
-                <Footer/>
-            </>
-        );
-    }
+   componentDidUpdate(prevProps) {
+      if (
+         this.props.cartIconAnim !==
+         prevProps.cartIconAnim
+      ) {
+         return setTimeout(
+            () => this.props.YourCartClicked(),
+            900,
+         );
+      }
+   }
+   render() {
+      const {
+         location: { pathname },
+      } = this.props;
+      return (
+         <>
+            <MainTemplate>
+               <UserSection pathname={pathname} />
+            </MainTemplate>
+            <Footer />
+         </>
+      );
+   }
 }
 const mapStateToProps = (state) => {
-    const { cartIconAnim } = state;
-    return { cartIconAnim };
+   const { cartIconAnim } = state;
+   return { cartIconAnim };
 };
 const mapDispatchToProps = (dispatch) => ({
-    YourCartClicked: () =>
-        dispatch(YourCartClicked()),
+   YourCartClicked: () =>
+      dispatch(YourCartClicked()),
 });
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
+   mapStateToProps,
+   mapDispatchToProps,
 )(withContext(withRouter(User)));
 User.propTypes = {
-    loaction: PropTypes.object,
+   loaction: PropTypes.object,
 };
