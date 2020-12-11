@@ -5,7 +5,6 @@ import React, {
 } from 'react';
 import MainTemplate from 'templates/MainTemplate/MainTemplate';
 import { connect } from 'react-redux';
-
 import { NavLink } from 'react-router-dom';
 import { routes } from 'routes';
 import { ReturnClicked } from 'actions';
@@ -20,11 +19,14 @@ import {
    Button,
    InfoWrapper,
    ListItem,
-   ItemSize,
+   Option,
    CustomSelect,
+   SelectWrapper,
+   CardWrapper,
+   CustomArrow
 } from 'views/Details-styles';
 
-const sizes = ['S', 'M', 'L', 'XL', 'XXL'];
+const sizes = ['Rozmiar S', 'Rozmiar M', 'Rozmiar L', 'Rozmiar XL', 'Rozmiar XXL'];
 
 const Details = ({
    actualInfo,
@@ -77,19 +79,19 @@ const Details = ({
    const handleChecked = (event) => {
       setActualSize(event.target.value);
       switch (event.target.value) {
-         case 'S':
+         case 'Rozmiar S':
             setAvailable(true);
             break;
-         case 'M':
+         case 'Rozmiar M':
             setAvailable(false);
             break;
-         case 'L':
+         case 'Rozmiar L':
             setAvailable(true);
             break;
-         case 'XL':
+         case 'Rozmiar XL':
             setAvailable(false);
             break;
-         case 'XXL':
+         case 'Rozmiar XXL':
             setAvailable(true);
             break;
          default:
@@ -100,31 +102,38 @@ const Details = ({
          <MainTemplate>
             <DetailSection>
                <DescriptionSection>
-                  <CardLazy
-                     product={actualProduct}
-                     ref={myImage}
-                  />
+                  <CardWrapper>
+                     <CardLazy
+                        product={actualProduct}
+                        ref={myImage}
+                     />
+                  </CardWrapper>
                   <InfoWrapper
                      ref={myInfoWrapper}
                   >
-                     <CustomSelect
-                        value={actualSize}
-                        onChange={(e) => {
-                           handleChecked(e);
-                        }}
-                     >
-                        {sizes.map((item) => (
-                           <ItemSize
-                              value={item}
-                              key={item}
-                           >
-                              {item}
-                           </ItemSize>
-                        ))}
-                     </CustomSelect>
-                     {available
+                     <SelectWrapper>
+                        <CustomSelect
+                           value={actualSize}
+                           onChange={(e) => {
+                              handleChecked(e);
+                           }}
+                        >
+                           {sizes.map((item) => (
+                              <Option
+                                 value={item}
+                                 key={item}
+                              >
+                                 {item}
+                              </Option>
+                           ))}
+                        </CustomSelect>
+                        <CustomArrow/>
+                     </SelectWrapper>
+                     <ListItem>
+                      {available
                         ? `Rozmiar ${actualSize} jest dostepny`
-                        : `Rozmiar ${actualSize} nie jest dostepny`}
+                        : `Rozmiar ${actualSize} nie jest dostepny`}  
+                     </ListItem>
                      <ListItem>
                         Dostawa 48 godzin
                      </ListItem>
