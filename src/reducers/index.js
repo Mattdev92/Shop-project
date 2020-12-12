@@ -157,7 +157,7 @@ const rootReducer = (
       case 'HAMBURGER_CLICKED':
          return {
             ...state,
-            sidegibarOpen: !state.sidebarOpen,
+            sidebarOpen: !state.sidebarOpen,
             hamburgerAnimStart: !state.hamburgerAnimStart,
             cartIconAnim: false,
             redirect: false,
