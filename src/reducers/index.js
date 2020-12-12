@@ -103,7 +103,7 @@ const initialState = {
    Woman: [
       [
          dressWoman1,
-         'Spudnica model 1 ',
+         'Spódnica model 1 ',
          50,
          dressWoman8,
       ],
@@ -157,7 +157,7 @@ const rootReducer = (
       case 'HAMBURGER_CLICKED':
          return {
             ...state,
-            sidebarOpen: !state.sidebarOpen,
+            sidegibarOpen: !state.sidebarOpen,
             hamburgerAnimStart: !state.hamburgerAnimStart,
             cartIconAnim: false,
             redirect: false,
