@@ -16,6 +16,7 @@ const Hamburger = ({
    <Wrapper
       onClick={hamburgerClicked}
       sidebaropen={sidebarOpen}
+      id="hamburgerComponent"
    >
       <HamburgerLine
          hamburgerAnim={hamburgerAnimStart}
