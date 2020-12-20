@@ -36,19 +36,9 @@ describe('Rendering component <Hamburger/>', () => {
             .length,
       ).toBe(2);
    });
-
-   // it('check if after click state is ok', () => {
-   //     mockFn=jest.fn();
-   //     initialState = {
-   //         hamburgerClicked: ()=>{},
-   //         hamburgerAnimStart: true,
-   //         sidebarOpen: null,
-   //     }
-   //     const elemToClick = wrapper.find("#hamburgerComponent").first();
-   //     console.log(elemToClick.debug());
-   //     elemToClick.simulate("click");
-   //     expect(mockFn).mock.calls.length.toBe(1);
-   //   });
+   it('check click simulation', () => {
+      const clickComponent = wrapper.find('#hamburgerComponent');
+      clickComponent.hostNodes().simulate('click');
+   });
 });
 
-//Rendering test
