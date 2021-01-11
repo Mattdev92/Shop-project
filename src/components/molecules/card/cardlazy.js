@@ -17,10 +17,7 @@ const Cardlazy=(props)=> {
   return (
     <CardWrapper>
       <Suspense fallback={<Wrapper><AwsomeComponent/></Wrapper>}>
-        {
-          setTimeout(()=><Card {...props}/>,500)
-        }
-          
+        <Card {...props}/>        
       </Suspense>
     </CardWrapper>
   );
