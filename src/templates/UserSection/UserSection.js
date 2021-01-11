@@ -56,7 +56,6 @@ class UserTemplate extends React.Component {
                   placeholder="Szukaj"
                />
             </FilterWrapper>
-
             <InnerWrapper
                sidebaropen={sidebarOpen}
                ref={(card) =>

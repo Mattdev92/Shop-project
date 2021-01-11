@@ -1,7 +1,7 @@
 import React, { Suspense} from 'react';
 import AwsomeComponent from "components/molecules/card/loading";
 import styled from 'styled-components';
-const OtherComponent = React.lazy(() => import('components/molecules/card/card'));
+const Card = React.lazy(() => import('components/molecules/card/card'));
 const Wrapper = styled.div`
 position:absolute;
 top:50%;
@@ -17,9 +17,7 @@ const Cardlazy=(props)=> {
   return (
     <CardWrapper>
       <Suspense fallback={<Wrapper><AwsomeComponent/></Wrapper>}>
-        <section>
-          <OtherComponent {...props}/>
-        </section>
+          <Card {...props}/>
       </Suspense>
     </CardWrapper>
   );

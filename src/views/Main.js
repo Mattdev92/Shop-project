@@ -1,16 +1,12 @@
 import React from 'react';
 import MainTemplate from 'templates/MainTemplate/MainTemplate';
-import Slider from 'react-slick';
 import { TimelineMax } from 'gsap';
 import Title from 'components/atoms/title/title';
 import SaleSlider from 'components/organisms/slider/slider';
 import Footer from 'components/organisms/footer/footer';
 import { connect } from 'react-redux';
-import {
-   Wrapper,
-   MainTitle,
-   WrapperTwo,
-} from 'views/Main-styles';
+import { MainTitle } from 'views/Main-styles';
+import LazyImages from 'components/atoms/lazyImages/lazyImages';
 
 class Main extends React.Component {
    constructor(props) {
@@ -35,19 +31,6 @@ class Main extends React.Component {
    }
    render() {
       const { sidebarOpen } = this.props;
-      const settings = {
-         dots: false,
-         fade: true,
-         infinite: true,
-         speed: 500,
-         autoplay: true,
-         autoplaySpeed: 6000,
-         slidesToShow: 1,
-         arrows: true,
-         slidesToScroll: 1,
-         className: 'slides',
-         lazyLoad: true,
-      };
       return (
          <>
             <MainTemplate>
@@ -58,11 +41,7 @@ class Main extends React.Component {
                >
                   NOTHIN' LIKE LUX
                </MainTitle>
-               <Slider {...settings}>
-                  <Wrapper />
-                  <WrapperTwo />
-               </Slider>
-
+               <LazyImages />
                {window.innerWidth < 500 ? (
                   sidebarOpen === true ? null : (
                      <>

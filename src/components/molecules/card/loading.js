@@ -1,6 +1,5 @@
 import React from 'react';
-import { BallBeat } from 'react-pure-loaders';
-
+import { BallSpinLoader } from 'react-pure-loaders';
 class AwesomeComponent extends React.Component {
     constructor(props) {
       super(props);
@@ -10,12 +9,10 @@ class AwesomeComponent extends React.Component {
     }
     render() {
       return (
-        <div>
-          <BallBeat
+          <BallSpinLoader
             color={'#123abc'}
             loading={this.state.loading}
           />
-        </div>
       )
     }
   }
