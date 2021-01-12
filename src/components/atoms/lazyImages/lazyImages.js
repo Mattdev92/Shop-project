@@ -1,7 +1,7 @@
 import React, { Suspense} from 'react';
 import AwsomeComponent from "components/molecules/card/loading";
 import styled from 'styled-components';
-
+//
  const WrapperLoading = styled.div`
  display:flex;
  justify-content: center;
