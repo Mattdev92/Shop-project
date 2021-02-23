@@ -6,5 +6,5 @@ export const SliderWrapper = styled.div`
   align-items: center;
 `;
 export const SliderSection = styled.section`
-  margin-bottom:20px;
-  `;
+  margin-bottom: 20px;
+`;

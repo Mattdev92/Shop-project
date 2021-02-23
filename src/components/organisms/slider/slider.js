@@ -3,7 +3,10 @@ import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Cardlazy from 'components/molecules/card/cardlazy';
-import {SliderWrapper,SliderSection} from 'components/organisms/slider/slider-styles';
+import {
+  SliderWrapper,
+  SliderSection,
+} from 'components/organisms/slider/slider-styles';
 
 class SaleSlider extends React.Component {
   render() {
@@ -11,7 +14,7 @@ class SaleSlider extends React.Component {
       dots: true,
       infinite: false,
       speed: 500,
-      slidesToShow: window.innerWidth<500?1:3,
+      slidesToShow: window.innerWidth < 500 ? 1 : 3,
       slidesToScroll: 1,
       arrows: true,
       className: 'slides',
@@ -25,10 +28,7 @@ class SaleSlider extends React.Component {
             .filter((product) => product[2] < 60)
             .map((product) => (
               <SliderWrapper key={product}>
-                <Cardlazy
-                  product={product}
-                  
-                >
+                <Cardlazy product={product}>
                   {product[1]} {product[2]}zł
                 </Cardlazy>
               </SliderWrapper>
@@ -48,7 +48,5 @@ SaleSlider.propTypes = {
   Woman: PropTypes.array,
   eventText: PropTypes.string,
 };
-export default connect(
-  mapStateToProps,
-  null,
-)(SaleSlider);
+
+export default connect(mapStateToProps, null)(SaleSlider);

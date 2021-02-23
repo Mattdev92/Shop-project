@@ -5,14 +5,12 @@ import PropTypes from 'prop-types';
 
 class MainTemplate extends React.Component {
   render() {
-    const {
-      children,
-    } = this.props;
+    const { children } = this.props;
     return (
       <>
         <Navigation />
         <Sidebar />
-        {children}       
+        {children}
       </>
     );
   }

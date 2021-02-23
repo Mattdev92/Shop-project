@@ -1,6 +1,6 @@
-import { createGlobalStyle} from 'styled-components';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { createGlobalStyle } from 'styled-components';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;800&family=Nunito:ital,wght@1,600&family=Roboto:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Notable&display=swap');
@@ -15,7 +15,6 @@ const GlobalStyle = createGlobalStyle`
 html {
   font-size: 62,5%;
 }
-
 body {
   font-size: 1,6rem;
   margin:0;
@@ -33,13 +32,12 @@ body {
 .slides {
   position: relative;
 }
-
 .slides .slick-prev {
   left: 5%;
 }
-
 .slides .slick-next {
   right: 5%;
 }
-`
+`;
+
 export default GlobalStyle;
