@@ -1,4 +1,4 @@
-# E-commerice project
+# Shop project
 
 Hi ! I've just made my first e-commerce project using React & Redux to practisethose technologies.
 
