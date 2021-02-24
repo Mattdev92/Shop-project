@@ -17,6 +17,7 @@ const cartAnim = keyframes`
   transform: translateX(0px)
   translateY(0px)
   scale(1);
+  opacity:70%
 }
 `;
 export const Wrapper = styled.nav`
@@ -39,10 +40,12 @@ export const Wrapper = styled.nav`
     sidebaropen === true &&
     css`
       background-color: black;
+      opacity:70%;
       @media (max-width: 440px) {
         padding: 0;
         margin: 0;
         justify-content: space-evenly;
+        opacity:70%;
       }
     `}
 `;
@@ -58,6 +61,7 @@ export const InnerWrapper = styled.div`
       filter: invert(1);
       transition-property: filter;
       transition-duration: 1s;
+      opacity:70%;
       transition-timing-function: linear;
     `}
   @media (max-width: 440px) {

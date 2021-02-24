@@ -7,7 +7,7 @@ opacity: 0%;
 }
 to{
 transform: translateX(0px);
-opacity: 100%;
+opacity: 70%;
 }
 @media(max-width:440px){
   from{
@@ -16,7 +16,7 @@ opacity: 0%;
 }
 to{
 transform: translateX(0px);
-opacity: 100%;
+opacity: 70%;
 }
 }
 `;
@@ -26,7 +26,7 @@ opacity: 0%;
 transform: translateX(-100px)
 }
 to{
-opacity: 100%;
+opacity: 70%;
 transform: translateX(0px)
 }
 `;
@@ -37,7 +37,7 @@ from{
 }
 to{
   transform: translateX(-310px);
-  opacity:100%
+  opacity:70%
 }
 @media (max-width: 440px) {
   from{
@@ -46,7 +46,7 @@ opacity: 0%;
 }
 to{
 transform: translateX(-80vw)
-opacity: 100%;
+opacity: 70%;
 }
 }
 `;
@@ -72,6 +72,7 @@ export const SidebarWrapper = styled.div`
     css`
       transform: translateX(0px);
       animation: ${SidebarAnim} 1s ease-out;
+      opacity: 70%;
     `}
   ${({ sidebaropen }) =>
     sidebaropen === 'false'
@@ -79,6 +80,7 @@ export const SidebarWrapper = styled.div`
           transform: translateX(-310px);
           animation: ${SidebarAnimBack} 0.4s ease-out;
           height: 100vh;
+          opacity:0%
         `
       : null}
     @media (max-width: 440px) {
@@ -94,6 +96,7 @@ export const SidebarWrapper = styled.div`
         z-index: 998;
         transform: translateX(0px);
         animation: ${SidebarAnim} 0.6s ease-out;
+        opacity:70%;
       `}
   }
 `;
