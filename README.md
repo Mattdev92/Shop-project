@@ -1,71 +1,70 @@
-## Shop-project using React & Redux
+# E-commerice project
+
+Hi ! I've just made my first e-commerce project using React & Redux to practisethose technologies.
+
+Implemented solutions
+
+ 1. Cards displayed in grid view
+ 2. Details view of products
+ 3. Shopping card funcionality: add to shopping cart, delete from cart 
+ 4. Possibility of changing quantity of products in cart
+ 5. Contact and order form 
+ 
+## How it works
 ![](shopgif.gif)
 
+## Getting Started
 
-## Available Scripts
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-In the project directory, you can run:
+### Installing
 
-### `npm start`
+What things you need to install the software and how to install them
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Project was prepared based on CRA template.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+npx install create-react-app --npm
 
-### `npm test`
+React router and react router Dom for creating routes\
+npm i --save rect-router react-router-dom
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+State managment:\
+npm install--save react-redux redux
 
-### `npm run build`
+Redux thunk - middleware for redux - ability to make async functions in redux
+npm install --save redux-thunk
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+styled components\
+npm i styled-components
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+react slick abd react scroll. and slick-carousel\
+npm i --save react-slick react-scroll slick-carousel
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+formik\
+npm i formik
 
-### `npm run eject`
+gsap - librairy for advanced animations\
+npm i react-gsap
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+jest and enzyme\
+npm i --save enzyme 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Test
+Unit test for some components:
+1.Hamburger
+2.Title
+3.
+## Prettier and Eslint configuration
+Configuration  based on CRA documentation
+https://create-react-app.dev/docs/setting-up-your-editor/#formatting-code-automatically
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Deployment
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Website was deployed using Netlify
 
-## Learn More
+## Authors
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* **Mateusz Grzejszczyk** - *Initial work* -
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## License
+Free licence
