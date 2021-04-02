@@ -17,9 +17,11 @@ Implemented solutions
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Installing
+After clone this project the only thing you nedd to do to start this application is installing node modules by typing "npm install" in console and start localhost by typing "npm start" in console.
 
-What things you need to install the software and how to install them
+### How I create this project ? 
+
+What things you need to install and how to install them
 
 Project was prepared based on CRA template.
 
