@@ -19,7 +19,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 After clone this project the only thing you nedd to do to start this application is installing node modules by typing "npm install" in console and start localhost by typing "npm start" in console.
 
-### How I create this project ? 
+### How did I create this project ? 
 
 What things you need to install and how to install them
 
